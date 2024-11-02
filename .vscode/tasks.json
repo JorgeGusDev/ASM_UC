@@ -1,0 +1,35 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Compilar ASM",
+            "type": "shell",
+            "command": "ml",
+            "args": [
+                "/c",
+                "/coff",
+                "Main.asm"
+            ],
+            "group": "build",
+            "problemMatcher": ["$gcc"]
+        },
+        {
+            "label": "Enlazar OBJ",
+            "type": "shell",
+            "command": "link",
+            "args": [
+                "Main.obj"
+            ],
+            "group": "build",
+            "dependsOn": "Compilar ASM",
+            "problemMatcher": ["$gcc"]
+        },
+        {
+            "label": "Ejecutar",
+            "type": "shell",
+            "command": "Main.exe",
+            "group": "test",
+            "dependsOn": "Enlazar OBJ"
+        }
+    ]
+}
